@@ -1,0 +1,29 @@
+name: ui-preview-upload-to-s3-action
+
+description: Upload files to S3
+
+inputs:
+  src-path:
+    description: Source directory
+    required: true
+  dest-path:
+    description: Destination S3 URL
+    required: true
+  s3-key-id:
+    description: S3 key ID
+    required: true
+  s3-secret-key:
+    description: S3 secret key
+    required: true
+
+runs:
+  using: composite
+  steps:
+  - name: Upload to S3
+    env:
+      AWS_ACCESS_KEY_ID: ${{ inputs.s3-key-id }}
+      AWS_SECRET_ACCESS_KEY: ${{ inputs.s3-secret-key }}
+      AWS_DEFAULT_REGION: ru-central1
+      AWS_EC2_METADATA_DISABLED: true
+    run: aws s3 cp ${{ inputs.src-path }} s3://storybook-static${{ inputs.dest-path }} --endpoint-url=https://storage.yandexcloud.net --recursive
+    shell: bash
