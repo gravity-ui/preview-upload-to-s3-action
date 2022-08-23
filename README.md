@@ -1,4 +1,6 @@
-# ui-preview-upload-to-s3-action
+# preview-upload-to-s3-action
+
+A GitHub action that uploads storybook static to specific s3 bucket.
 
 ## Inputs
 

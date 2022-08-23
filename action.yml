@@ -1,4 +1,4 @@
-name: ui-preview-upload-to-s3-action
+name: preview-upload-to-s3-action
 
 description: Upload files to S3
 
