@@ -25,5 +25,7 @@ runs:
       AWS_SECRET_ACCESS_KEY: ${{ inputs.s3-secret-key }}
       AWS_DEFAULT_REGION: ru-central1
       AWS_EC2_METADATA_DISABLED: true
+      AWS_REQUEST_CHECKSUM_CALCULATION: when_required
+      AWS_RESPONSE_CHECKSUM_VALIDATION: when_required
     run: aws s3 cp ${{ inputs.src-path }} s3://storybook-static${{ inputs.dest-path }} --endpoint-url=https://storage.yandexcloud.net --recursive
     shell: bash
